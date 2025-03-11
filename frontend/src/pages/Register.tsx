@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export default function Register() {
 
@@ -8,8 +9,16 @@ export default function Register() {
         password: '',
     })
 
-    const registerUser = (e:any) => {
+    const registerUser = async (e:any) => {
         e.preventDefault();
+        const {name, email, password} = data;
+        try {
+            const {data} = await axios.post('/register', {
+                name, email, password
+            });
+        } catch (error) {
+            
+        }
     }
 
   return (
